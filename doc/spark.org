@@ -1,0 +1,98 @@
+* Data Abstracton
+  - RDD
+  - Broadcast variable / accumulator
+
+* Cluster
+  - Driver (Process)
+  - Executor (Processes)
+  - CM
+
+* Conf
+  - executor-number
+  - executor-memory
+  - deploy-mode
+
+* Operatoins of RDD
+  - transformation
+    - narrow: per partition
+    - wide: multiple partitions
+  - action
+    - reduce
+
+* Pyspark
+** Fixme
+  PySpark requires the *same minor version* of Python in both *driver and workers*
+  - PYSPARK_PYTHON
+  - PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook" ./bin/pyspark
+
+  _If using a path on the local filesystem, the file must also be
+  accessible at the same path on worker nodes_. Either copy the file
+  to all workers or use a network-mounted shared file system.
+
+  Prior to execution, Spark computes the task’s closure. The closure
+  is those variables and methods which must be visible for the
+  executor to perform its computations on the RDD (in this case
+  foreach()). This closure is serialized and sent to each executor.
+
+  Prior to execution, Spark computes the task’s closure. The closure
+  is those variables and methods which must be visible for the
+  executor to perform its computations on the RDD (in this case
+  foreach()). This closure is serialized and sent to each executor.
+
+  Prior to execution, Spark computes the task’s closure. The closure
+  is those variables and methods which must be visible for the
+  executor to perform its computations on the RDD (in this case
+  foreach()). This closure is serialized and sent to each executor.
+
+
+  Certain operations within Spark trigger an event known as the
+  shuffle. The shuffle is Spark’s mechanism for re-distributing data
+  so that it’s grouped differently across partitions. This typically
+  involves copying data across executors and machines, making the
+  shuffle a complex and costly operation.
+
+** Note
+  PYSPARK_DRIVER_PYTHON=ipython2 $SPARK_HOME/bin/pyspark
+
+
+* spark data structure
+  - DataFrame
+    + hc.sql() return DataFrame
+  - RDD
+
+** sbt
+   sbt package
+   sbt run
+
+* Tips in REPL
+  :help
+  :type -v scalaVar
+  :type scalaVar
+  scalaVar. Table
+
+** ensime
+   + ~/.sbt/0.13/plugins/plugins.sbt, see [[http://ensime.github.io/build_tools/sbt/]]
+     addSbtPlugin("org.ensime" % "sbt-ensime" % "1.0.0") // ensime developers should use 1.9.0
+   + sbt ensimeConfig
+
+   + sbt -Dsbt.override.build.repos=true ensimeConfig
+     ~/.sbt/repositories
+     #+BEGIN_SRC text
+       [repositories]
+       local
+       nexus: http://maven.dev.sh.ctripcorp.com:8081/nexus/content/groups/public/
+       typesafe: http://repo.typesafe.com/typesafe/ivy-releases/, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext], bootOnly
+       sonatype-oss-releases
+       maven-central
+     #+END_SRC
+
+
+* scala
+  - oob
+    - Every value is an *object*
+    - Types and behavior of objects are described by *classes* and *traits*
+      - Traits
+      - Class
+  - functional
+  - scala doc
+    axel http://downloads.lightbend.com/scala/2.11.8/scala-docs-2.11.8.txz
