@@ -1,0 +1,2 @@
+* Project Structure
+  - src/scala: *scala projects* are saved in this directory, one project is represendted by one directory

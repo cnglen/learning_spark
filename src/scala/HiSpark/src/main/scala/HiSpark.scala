@@ -2,7 +2,6 @@ import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 
 object HiSpark {
-
   def quickStart(sc: SparkContext) = {
     val sparkReadmeFile = sc.textFile("file://" + sys.env("SPARK_HOME") + "/README.md").cache()
 
@@ -24,7 +23,6 @@ object HiSpark {
     val numBs = sparkReadmeFile.filter(line => line.contains("b")).count()
     println("lines with a: %d, with b: %d".format(numAs, numBs))
   }
-
 
   def simpleApp(sc: SparkContext) = {
     val data = sc.textFile("file://" + new java.io.File(".").getCanonicalPath + "/../../../data/user_purchase_history.csv")
